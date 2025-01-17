@@ -1,0 +1,110 @@
+<mxGraphModel dx="1153" dy="579" grid="1" gridSize="10" guides="1" tooltips="1"
+  connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850"
+  pageHeight="1100" math="0" shadow="0">
+  <root>
+    <!-- Raíces -->
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <!-- Clase Person -->
+    <mxCell id="Person" value="Person&#xa;-------------------&#xa;- nif: String&#xa;- firstName: String&#xa;- lastName: String&#xa;- birthDate: LocalDate&#xa;-------------------&#xa;+ getNif(): String&#xa;+ getFirstName(): String" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="40" width="140" height="140" as="geometry"/>
+    </mxCell>
+
+    <!-- Clase Teacher -->
+    <mxCell id="Teacher" value="Teacher extends Person&#xa;-------------------&#xa;- department: String" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="240" y="40" width="160" height="100" as="geometry"/>
+    </mxCell>
+
+    <!-- Clase Student -->
+    <mxCell id="Student" value="Student extends Person&#xa;-------------------&#xa;- group: Group&#xa;- enrollments: List&lt;Enrollment&gt;" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="440" y="40" width="200" height="120" as="geometry"/>
+    </mxCell>
+
+    <!-- Clase Group -->
+    <mxCell id="Group" value="Group&#xa;-------------------&#xa;- name: String&#xa;- tutor: Teacher&#xa;- students: List&lt;Student&gt;" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="680" y="40" width="160" height="120" as="geometry"/>
+    </mxCell>
+
+    <!-- Clase School -->
+    <mxCell id="School" value="School&#xa;-------------------&#xa;- name: String&#xa;- addresses: List&lt;Address&gt;&#xa;- groups: List&lt;Group&gt;" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="240" width="160" height="120" as="geometry"/>
+    </mxCell>
+
+    <!-- Clase Address -->
+    <mxCell id="Address" value="Address&#xa;-------------------&#xa;- street: String&#xa;- city: String&#xa;- country: String&#xa;- phone: String" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="240" y="240" width="160" height="120" as="geometry"/>
+    </mxCell>
+
+    <!-- Clase Subject -->
+    <mxCell id="Subject" value="Subject (abstract)&#xa;-------------------&#xa;- name: String&#xa;- code: String&#xa;- credits: int&#xa;- hours: int&#xa;- teacher: Teacher" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="440" y="240" width="180" height="140" as="geometry"/>
+    </mxCell>
+
+    <!-- Clase SubjectNoExam -->
+    <mxCell id="SubjectNoExam" value="SubjectNoExam&#xa;extends Subject" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="680" y="240" width="160" height="60" as="geometry"/>
+    </mxCell>
+
+    <!-- Clase SubjectWithExam -->
+    <mxCell id="SubjectWithExam" value="SubjectWithExam&#xa;extends Subject&#xa;-------------------&#xa;- examDate: LocalDate&#xa;- examTime: LocalTime&#xa;- examLocation: String&#xa;- examRoom: String" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="860" y="240" width="200" height="120" as="geometry"/>
+    </mxCell>
+
+    <!-- Clase SubjectWithIndividualPractice -->
+    <mxCell id="SubjectWithIndividualPractice" value="SubjectWithIndividualPractice&#xa;extends Subject&#xa;-------------------&#xa;- practiceType: String" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="1080" y="240" width="200" height="80" as="geometry"/>
+    </mxCell>
+
+    <!-- Clase SubjectWithGroupPractice -->
+    <mxCell id="SubjectWithGroupPractice" value="SubjectWithGroupPractice&#xa;extends Subject&#xa;-------------------&#xa;- practiceType: String&#xa;- maxGroupSize: int" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="1320" y="240" width="220" height="100" as="geometry"/>
+    </mxCell>
+
+    <!-- Clase Enrollment (abstract) -->
+    <mxCell id="Enrollment" value="Enrollment (abstract)&#xa;-------------------&#xa;- semester: String&#xa;- status: EnrollmentStatus&#xa;- mark: Double&#xa;- subject: Subject" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="440" y="440" width="200" height="120" as="geometry"/>
+    </mxCell>
+
+    <!-- Clase IndividualEnrollment -->
+    <mxCell id="IndividualEnrollment" value="IndividualEnrollment&#xa;extends Enrollment&#xa;-------------------&#xa;- student: Student" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="680" y="440" width="200" height="100" as="geometry"/>
+    </mxCell>
+
+    <!-- Clase GroupEnrollment -->
+    <mxCell id="GroupEnrollment" value="GroupEnrollment&#xa;extends Enrollment&#xa;-------------------&#xa;- enrolledStudents: List&lt;Student&gt;" style="shape=swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="920" y="440" width="220" height="100" as="geometry"/>
+    </mxCell>
+
+    <!-- Relación: School - Address -->
+    <mxCell id="Rel_School_Address" edge="1" parent="1" source="School" target="Address">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Relación: School - Group -->
+    <mxCell id="Rel_School_Group" edge="1" parent="1" source="School" target="Group">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Relación: Group - Student -->
+    <mxCell id="Rel_Group_Student" edge="1" parent="1" source="Group" target="Student">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Relación: Teacher - Subject -->
+    <mxCell id="Rel_Teacher_Subject" edge="1" parent="1" source="Teacher" target="Subject">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Relación: Subject - Enrollment -->
+    <mxCell id="Rel_Subject_Enrollment" edge="1" parent="1" source="Subject" target="Enrollment">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Relación: Student - Enrollment (para anclar) -->
+    <mxCell id="Rel_Student_Enrollment" edge="1" parent="1" source="Student" target="Enrollment">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+  </root>
+</mxGraphModel>
